@@ -51,12 +51,18 @@ let namee = document.querySelector('.quote_author');
 
 
 button.addEventListener('click', function(){
+
+    let number = Math.floor(Math.random()*Quotes.length);
+    console.log(number)
+    let quoteText = Quotes[number].text;
+    console.log(quoteText)
+    let quoteAuthor = Quotes[number].author;
+    console.log(quoteAuthor)
+
     quote.innerText = quoteText ;
     namee.innerText = quoteAuthor;
+
 });
 
 
-let number = Math.floor(Math.random()*Quotes.length + 1);
-let quoteText = Quotes[number].text;
-let quoteAuthor = Quotes[number].author;
 
