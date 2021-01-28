@@ -127,23 +127,33 @@ let questions = [
       c: "Bill Gates"
     },
     correctAnswer: "c"
+  },
+
+  {
+    question: "Who is Donald Fuking trump ?",
+    answers: {
+      a: "British Cunt",
+      b: "American Dickhead",
+      c: "Russian Wanker"
+    },
+    correctAnswer: "b"
   }
 ];
 
 let button = document.querySelector('.button');
-let Question = document.querySelector('.question');
+let question = document.querySelector('.question');
 let option1 = document.querySelector('.option-1');
 let option2 = document.querySelector('.option-2');
 let option3 = document.querySelector('.option-3');
 
 nextQuestion = () => {
-
+  
   let number = Math.floor(Math.random()*questions.length);
 
-  Question.textContent = questions[number].question;
-  option1.textContent = questions[number].answers.a;
-  option2.textContent = questions[number].answers.b;
-  option3.textContent = questions[number].answers.c;
+  question.innerText = questions[number].question;
+  option1.innerText = questions[number].answers.a;
+  option2.innerText = questions[number].answers.b;
+  option3.innerText= questions[number].answers.c;
 
   console.log(number);
   console.log(questions[number].question);
@@ -154,4 +164,4 @@ nextQuestion = () => {
 
 };
 
-button.addEventListener('click', nextQuestion());
+button.addEventListener("click", nextQuestion());
