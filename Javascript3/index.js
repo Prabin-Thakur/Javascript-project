@@ -7,7 +7,7 @@ let sum = document.querySelector('.sum');
 button.addEventListener('click',function(){
     let tipp = bill.value * billPercent.value / 100 ;
     tip.innerText = tipp;
-    let billl = bill.value + tipp;
+    let billl = parseInt(bill.value) + tipp;
     sum.innerText = billl;
 })
 

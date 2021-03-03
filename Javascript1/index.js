@@ -110,7 +110,7 @@ let questions = [
   },
 
   {
-    question: " DB computer abbreviation usually means ?",
+    question: "DB computer abbreviation usually means ?",
     answers: {
       a: "Data Block",
       b: "Double Byte",
@@ -145,23 +145,101 @@ let question = document.querySelector('.question');
 let option1 = document.querySelector('.option-1');
 let option2 = document.querySelector('.option-2');
 let option3 = document.querySelector('.option-3');
+let start = document.querySelector('.start_button');
+let main = document.querySelector('.main');
+let score = document.querySelector('.score');
+let scoreNumber = document.querySelector('.score_number');
+let scoreDigit = 0;
+let number = 0;
+let count = 0;
+let correctAnswerr = questions[number].answers[questions[number].correctAnswer];
+
+button.addEventListener('click', () => {
+  number++
+});
+
+start.addEventListener('click',() =>{
+   start.classList.add('remove');
+   button.style.display = 'inline';
+   main.style.display = 'inline';
+   score.style.display ='inline';
+   nextQuestion();
+})
 
 nextQuestion = () => {
-  
-  let number = Math.floor(Math.random()*questions.length);
-
   question.innerText = questions[number].question;
   option1.innerText = questions[number].answers.a;
   option2.innerText = questions[number].answers.b;
   option3.innerText= questions[number].answers.c;
 
-  console.log(number);
-  console.log(questions[number].question);
-  console.log(questions[number].answers.a);
-  console.log(questions[number].answers.b);
-  console.log(questions[number].answers.c);
-  console.log(questions[number].correctAnswer);
-
+  console.log('question = ' + questions[number].question);
+  console.log('answer 1 = ' + questions[number].answers.a);
+  console.log('answer 2 = ' + questions[number].answers.b);
+  console.log('answer 3 = ' + questions[number].answers.c);
+  console.log('correctAsnswer = ' + questions[number].answers[questions[number].correctAnswer]);
 };
 
-button.addEventListener("click", nextQuestion());
+calculatorScore = () => {
+  scoreDigit++
+  return scoreDigit
+}
+
+button.addEventListener("click", nextQuestion);
+button.addEventListener("click", () =>{
+  option1.classList.remove('color1');
+  option2.classList.remove('color1');
+  option3.classList.remove('color1');
+  option1.classList.remove('color2');
+  option2.classList.remove('color2');
+  option3.classList.remove('color2');
+  score = 0;
+});
+
+option1.addEventListener('click', () => {
+  if(option1.innerText == questions[number].answers[questions[number].correctAnswer]){
+    option1.classList.add('color2');
+    option2.classList.add('color1');
+    option3.classList.add('color1');
+    scoreNumber.innerText = calculatorScore();
+    count++
+    console.log(count);
+  }else {
+    option1.classList.add('color1')
+  }
+});
+
+option2.addEventListener('click', () => {
+  if(option2.innerText == questions[number].answers[questions[number].correctAnswer]){
+    option2.classList.add('color2');
+    option1.classList.add('color1');
+    option3.classList.add('color1');
+    scoreNumber.innerText = calculatorScore();
+    count++
+    console.log(count);
+  }else {
+    option2.classList.add('color1')
+  }
+});
+
+option3.addEventListener('click', () => {
+  if(option3.innerText == questions[number].answers[questions[number].correctAnswer]){
+    option3.classList.add('color2');
+    option2.classList.add('color1');
+    option1.classList.add('color1');
+    scoreNumber.innerText = calculatorScore();
+    count++
+    console.log(count);
+  }else {
+    option3.classList.add('color1')
+  }
+});
+
+
+
+
+
+
+
+
+
+
