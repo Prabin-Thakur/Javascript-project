@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(to right, #00aaff, #00ff6c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: 80px 80px 80px 80px;
+  grid-template-rows: 60px 60px 60px 60px 60px 60px 60px;
+  grid-template-areas:
+    "screeen screeen screeen screeen"
+    "screeen screeen screeen screeen"
+    "allclear allclear delete operator"
+    "number number number operator"
+    "number number number operator"
+    "number number number operator"
+    "number number equal equal";
+}
+
+.screen {
+  grid-area: screeen;
+  background-color: rgb(54, 51, 51);
+}
+
+.data-operation {
+  grid-area: operator;
+}
+
+.data-number {
+  grid-area: number;
+}
+
+.data-equal {
+  grid-area: equal;
+}
+
+.data-allclear {
+  grid-area: allclear;
+}
+
+.data-delete {
+  grid-area: delete;
+}
