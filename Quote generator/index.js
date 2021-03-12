@@ -42,6 +42,10 @@ let Quotes = [
     {
         text : 'Tell me and I forget. Teach me and I remember. Involve me and I learn.',
         author : '- Benjamin Franklin'
+    },
+    {
+        text : 'We can\'t live without sex no matter what, We all love it there is no denying that.',
+        author : '- Prabin Thakur'
     }
 ];
 
