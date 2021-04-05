@@ -2,6 +2,10 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  outline: none;
 }
 
 body {
@@ -9,43 +13,136 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+button {
+  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.previous {
+  color: rgb(245, 231, 231);
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+.current {
+  color: rgb(245, 231, 231);
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .parent {
   display: grid;
-  grid-template-columns: 80px 80px 80px 80px;
-  grid-template-rows: 60px 60px 60px 60px 60px 60px 60px;
-  grid-template-areas:
-    "screeen screeen screeen screeen"
-    "screeen screeen screeen screeen"
-    "allclear allclear delete operator"
-    "number number number operator"
-    "number number number operator"
-    "number number number operator"
-    "number number equal equal";
+  grid-template-columns: repeat(4, 80px);
+  grid-template-rows: 40px 50px repeat(5, 60px);
+  overflow: hidden;
 }
 
 .screen {
-  grid-area: screeen;
   background-color: rgb(54, 51, 51);
-}
-
-.data-operation {
-  grid-area: operator;
-}
-
-.data-number {
-  grid-area: number;
-}
-
-.data-equal {
-  grid-area: equal;
+  grid-row: 1/3;
+  grid-column: 1/5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .data-allclear {
-  grid-area: allclear;
+  grid-row: 3/4;
+  grid-column: 1/3;
 }
 
 .data-delete {
-  grid-area: delete;
+  grid-row: 3/4;
+  grid-column: 3/4;
+}
+
+.divide {
+  grid-row: 3/4;
+  grid-column: 4/5;
+}
+
+.one {
+  grid-row: 4/5;
+  grid-column: 1/2;
+}
+
+.two {
+  grid-row: 4/5;
+  grid-column: 2/3;
+}
+
+.three {
+  grid-row: 4/5;
+  grid-column: 3/4;
+}
+
+.four {
+  grid-row: 5/6;
+  grid-column: 1/2;
+}
+
+.five {
+  grid-row: 5/6;
+  grid-column: 2/3;
+}
+
+.six {
+  grid-row: 5/6;
+  grid-column: 3/4;
+}
+
+.seven {
+  grid-row: 6/7;
+  grid-column: 1/2;
+}
+
+.eight {
+  grid-row: 6/7;
+  grid-column: 2/3;
+}
+
+.nine {
+  grid-row: 6/7;
+  grid-column: 3/4;
+}
+
+.zero {
+  grid-row: 7/8;
+  grid-column: 2/3;
+}
+
+.decimal {
+  grid-row: 7/8;
+  grid-column: 1/2;
+}
+
+.equal {
+  grid-row: 7/8;
+  grid-column: 3/5;
+}
+
+.plus {
+  grid-row: 5/6;
+  grid-column: 4/5;
+}
+
+.minus {
+  grid-row: 6/7;
+  grid-column: 4/5;
+}
+
+.multiply {
+  grid-row: 4/5;
+  grid-column: 4/5;
 }

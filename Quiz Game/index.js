@@ -145,11 +145,18 @@ let question = document.querySelector('.question');
 let option1 = document.querySelector('.option-1');
 let option2 = document.querySelector('.option-2');
 let option3 = document.querySelector('.option-3');
+let options = document.querySelectorAll('.option');
 let start = document.querySelector('.start_button');
 let main = document.querySelector('.main');
 let score = document.querySelector('.score');
+let header = document.querySelector('.header');
 let scoreNumber = document.querySelector('.score_number');
+let text = document.querySelector('.text');
+let restart = document.querySelector('.restart_button');
+let correctPoints = document.querySelector('.correctPoints');
+let incorrectPoints = document.querySelector('.incorrectPoints');
 let scoreDigit = 0;
+let incorrectDigit = 0;
 let number = 0;
 let count = 0;
 let correctAnswerr = questions[number].answers[questions[number].correctAnswer];
@@ -158,12 +165,14 @@ button.addEventListener('click', () => {
   number++
 });
 
+
+
 start.addEventListener('click',() =>{
    start.classList.add('remove');
    button.style.display = 'inline';
    main.style.display = 'inline';
    score.style.display ='inline';
-   nextQuestion();
+   nextQuestion();  
 })
 
 nextQuestion = () => {
@@ -179,11 +188,6 @@ nextQuestion = () => {
   console.log('correctAsnswer = ' + questions[number].answers[questions[number].correctAnswer]);
 };
 
-calculatorScore = () => {
-  scoreDigit++
-  return scoreDigit
-}
-
 button.addEventListener("click", nextQuestion);
 button.addEventListener("click", () =>{
   option1.classList.remove('color1');
@@ -193,6 +197,18 @@ button.addEventListener("click", () =>{
   option2.classList.remove('color2');
   option3.classList.remove('color2');
   score = 0;
+  console.log(scoreDigit,incorrectDigit);
+  console.log(number)
+
+  if(number >= questions.length){
+    header.style.display = 'none';
+    main.style.display = 'none';
+    text.style.display = 'inline';
+    restart.style.display = 'inline';
+    correctPoints.innerText = scoreDigit;
+    incorrectPoints.innerText = incorrectDigit;
+   };
+   
 });
 
 option1.addEventListener('click', () => {
@@ -200,9 +216,6 @@ option1.addEventListener('click', () => {
     option1.classList.add('color2');
     option2.classList.add('color1');
     option3.classList.add('color1');
-    scoreNumber.innerText = calculatorScore();
-    count++
-    console.log(count);
   }else {
     option1.classList.add('color1')
   }
@@ -213,9 +226,6 @@ option2.addEventListener('click', () => {
     option2.classList.add('color2');
     option1.classList.add('color1');
     option3.classList.add('color1');
-    scoreNumber.innerText = calculatorScore();
-    count++
-    console.log(count);
   }else {
     option2.classList.add('color1')
   }
@@ -226,18 +236,35 @@ option3.addEventListener('click', () => {
     option3.classList.add('color2');
     option2.classList.add('color1');
     option1.classList.add('color1');
-    scoreNumber.innerText = calculatorScore();
-    count++
-    console.log(count);
   }else {
     option3.classList.add('color1')
   }
 });
 
+restart.addEventListener('click',()=>{
+  scoreDigit = 0;
+  incorrectDigit = 0;
+  number = 0;
+  count = 0;
+  header.style.display = 'inline';
+  main.style.display = 'inline';
+  text.style.display = 'none';
+  restart.style.display = 'none';
+  nextQuestion()
+});
 
-
-
-
+for(let i = 0; i < options.length; i++){
+  options[i].addEventListener('click',()=>{
+    if(options[i].innerText !== correctAnswerr){
+      return;
+    }else{
+      scoreDigit++
+      alert('fuck');
+    }
+    scoreNumber.innerText = scoreDigit;
+    console.log(options[i].innerText)
+  })
+};
 
 
 

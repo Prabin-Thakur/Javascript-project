@@ -46,6 +46,10 @@ let Quotes = [
     {
         text : 'We can\'t live without sex no matter what, We all love it there is no denying that.',
         author : '- Prabin Thakur'
+    },
+    {
+        text : 'If you can do only one thing then don\'t get depressed or give up just hone that one thing to a degree that it far surpasses others.',
+        author : '- Zenitsu'
     }
 ];
 
