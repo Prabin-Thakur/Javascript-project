@@ -126,7 +126,7 @@ let questions = [
       b: "Jeff Bezos",
       c: "Bill Gates"
     },
-    correctAnswer: "c"
+    correctAnswer: "a"
   },
 
   {
@@ -140,13 +140,13 @@ let questions = [
   }
 ];
 
-let button = document.querySelector('.button');
 let question = document.querySelector('.question');
 let option1 = document.querySelector('.option-1');
 let option2 = document.querySelector('.option-2');
 let option3 = document.querySelector('.option-3');
 let options = document.querySelectorAll('.option');
 let start = document.querySelector('.start_button');
+let nextButton = document.querySelector('.next_button');
 let main = document.querySelector('.main');
 let score = document.querySelector('.score');
 let header = document.querySelector('.header');
@@ -161,84 +161,60 @@ let number = 0;
 let count = 0;
 let correctAnswerr = questions[number].answers[questions[number].correctAnswer];
 
-button.addEventListener('click', () => {
-  number++
-});
-
-
-
-start.addEventListener('click',() =>{
-   start.classList.add('remove');
-   button.style.display = 'inline';
-   main.style.display = 'inline';
-   score.style.display ='inline';
-   nextQuestion();  
-})
+let tracker1;
+let tracker2 = true;
 
 nextQuestion = () => {
-  question.innerText = questions[number].question;
-  option1.innerText = questions[number].answers.a;
-  option2.innerText = questions[number].answers.b;
-  option3.innerText= questions[number].answers.c;
+  question.textContent = questions[number].question;
+  option1.textContent = questions[number].answers.a;
+  option2.textContent = questions[number].answers.b;
+  option3.textContent = questions[number].answers.c;
 
   console.log('question = ' + questions[number].question);
   console.log('answer 1 = ' + questions[number].answers.a);
   console.log('answer 2 = ' + questions[number].answers.b);
   console.log('answer 3 = ' + questions[number].answers.c);
-  console.log('correctAsnswer = ' + questions[number].answers[questions[number].correctAnswer]);
+  console.log('correctAnswer = ' + questions[number].answers[questions[number].correctAnswer]);
 };
 
-button.addEventListener("click", nextQuestion);
-button.addEventListener("click", () =>{
-  option1.classList.remove('color1');
-  option2.classList.remove('color1');
-  option3.classList.remove('color1');
-  option1.classList.remove('color2');
-  option2.classList.remove('color2');
-  option3.classList.remove('color2');
-  score = 0;
-  console.log(scoreDigit,incorrectDigit);
-  console.log(number)
+start.addEventListener('click',() =>{
+  start.classList.add('remove');
+  nextButton.style.display = 'inline';
+  main.style.display = 'inline';
+  score.style.display ='inline'; 
+  nextQuestion();
+});
+
+nextButton.addEventListener('click',()=>{
+  number++;
 
   if(number >= questions.length){
+    tracker1 = false;
+  }else{
+    tracker1 = true;
+  }
+
+  if(tracker1){
+    nextQuestion();
+  }
+
+  if(!tracker1){
     header.style.display = 'none';
     main.style.display = 'none';
     text.style.display = 'inline';
     restart.style.display = 'inline';
-    correctPoints.innerText = scoreDigit;
-    incorrectPoints.innerText = incorrectDigit;
+    correctPoints.textContent = scoreDigit;
+    incorrectPoints.textContent = questions.length - correctPoints.textContent;
    };
-   
-});
 
-option1.addEventListener('click', () => {
-  if(option1.innerText == questions[number].answers[questions[number].correctAnswer]){
-    option1.classList.add('color2');
-    option2.classList.add('color1');
-    option3.classList.add('color1');
-  }else {
-    option1.classList.add('color1')
-  }
-});
+   option1.classList.remove('color1');
+   option2.classList.remove('color1');
+   option3.classList.remove('color1');
+   option1.classList.remove('color2');
+   option2.classList.remove('color2');
+   option3.classList.remove('color2');
 
-option2.addEventListener('click', () => {
-  if(option2.innerText == questions[number].answers[questions[number].correctAnswer]){
-    option2.classList.add('color2');
-    option1.classList.add('color1');
-    option3.classList.add('color1');
-  }else {
-    option2.classList.add('color1')
-  }
-});
-
-option3.addEventListener('click', () => {
-  if(option3.innerText == questions[number].answers[questions[number].correctAnswer]){
-    option3.classList.add('color2');
-    option2.classList.add('color1');
-    option1.classList.add('color1');
-  }else {
-    option3.classList.add('color1')
-  }
+   tracker2 = true;
 });
 
 restart.addEventListener('click',()=>{
@@ -250,23 +226,38 @@ restart.addEventListener('click',()=>{
   main.style.display = 'inline';
   text.style.display = 'none';
   restart.style.display = 'none';
-  nextQuestion()
+  tracker2 = true;
+  nextQuestion();
+  scoreNumber.textContent = 0;
 });
 
-for(let i = 0; i < options.length; i++){
-  options[i].addEventListener('click',()=>{
-    if(options[i].innerText !== correctAnswerr){
-      return;
+options.forEach(option => {
+  option.addEventListener('click',()=>{
+    if(option.innerText == questions[number].answers[questions[number].correctAnswer]){
+       if(option1.innerText == questions[number].answers[questions[number].correctAnswer]){
+         option1.classList.add('color2');
+       }else{
+         option1.classList.add('color1');
+       };
+       if(option2.innerText == questions[number].answers[questions[number].correctAnswer]){
+        option2.classList.add('color2');
+      }else{
+        option2.classList.add('color1');
+      };
+      if(option3.innerText == questions[number].answers[questions[number].correctAnswer]){
+        option3.classList.add('color2');
+      }else{
+        option3.classList.add('color1');
+      };     
+      if(tracker2){
+        count++
+        scoreDigit++
+        scoreNumber.textContent = count;
+      };
     }else{
-      scoreDigit++
-      alert('fuck');
-    }
-    scoreNumber.innerText = scoreDigit;
-    console.log(options[i].innerText)
-  })
-};
+      option.classList.add('color1');
+    };
 
-
-
-
-
+    tracker2 = false;
+  });
+});

@@ -9,8 +9,9 @@
   display: none;
 }
 
-.button {
+.next_button {
   display: none;
+  margin-top: 2rem;
 }
 
 .color1 {
@@ -58,7 +59,7 @@
   display: none;
 }
 
-.button {
+.next_button {
   background-color: rgb(31, 147, 255);
   color: white;
   float: right;
@@ -71,11 +72,11 @@
   font-size: 1.4rem;
 }
 
-.button:focus {
+.next_button:focus {
   outline: none;
 }
 
-.button:hover {
+.next_button:hover {
   color: rgb(17, 44, 44);
 }
 
@@ -106,6 +107,7 @@
   justify-content: center;
   align-items: center;
   height: 10rem;
+  margin-top: 2rem;
 }
 
 .restart_button {
@@ -124,4 +126,16 @@
   word-wrap: break-word;
   padding-left: 20px;
   display: none;
+}
+
+.start_button:hover {
+  cursor: pointer;
+}
+
+.next_button:hover {
+  cursor: pointer;
+}
+
+.restart_button:hover {
+  cursor: pointer;
 }
