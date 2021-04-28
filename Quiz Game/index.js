@@ -163,6 +163,7 @@ let correctAnswerr = questions[number].answers[questions[number].correctAnswer];
 
 let tracker1;
 let tracker2 = true;
+let tracker3 = true;
 
 nextQuestion = () => {
   question.textContent = questions[number].question;
@@ -204,7 +205,7 @@ nextButton.addEventListener('click',()=>{
     text.style.display = 'inline';
     restart.style.display = 'inline';
     correctPoints.textContent = scoreDigit;
-    incorrectPoints.textContent = questions.length - correctPoints.textContent;
+    incorrectPoints.textContent = incorrectDigit;
    };
 
    option1.classList.remove('color1');
@@ -215,6 +216,7 @@ nextButton.addEventListener('click',()=>{
    option3.classList.remove('color2');
 
    tracker2 = true;
+   tracker3 = true;
 });
 
 restart.addEventListener('click',()=>{
@@ -254,8 +256,13 @@ options.forEach(option => {
         scoreDigit++
         scoreNumber.textContent = count;
       };
+      tracker3 = false;
     }else{
       option.classList.add('color1');
+      if(tracker3){
+        incorrectDigit++;
+      }
+      tracker3 = false;
     };
 
     tracker2 = false;
