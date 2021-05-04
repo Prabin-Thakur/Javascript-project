@@ -48,7 +48,7 @@ operation = (operator) => {
 };
 
 compute = () => {
-    previous
+    
 };
 
 updateDisplay = () => {
@@ -72,6 +72,8 @@ operators.forEach(operator => {
 });
 
 allClear.addEventListener('click',clear);
+
+
 deleteButton.addEventListener('click', ()=>{
     deletee();
     previousScreen.innerText = '';
