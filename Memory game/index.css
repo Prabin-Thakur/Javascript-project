@@ -86,7 +86,7 @@
   width: 65%;
 }
 
-.boxes:hover {
+.rotate {
   transform: rotateY(180deg);
   box-shadow: -3px 3px 1px 1px rgb(156, 150, 140);
 }
@@ -99,4 +99,8 @@
 .back {
   backface-visibility: hidden;
   transform: rotateY(180deg);
+}
+
+.boxes:hover {
+  cursor: pointer;
 }
