@@ -104,3 +104,18 @@
 .boxes:hover {
   cursor: pointer;
 }
+
+.restart h1 {
+  font-size: 5rem;
+  font-family: "Pangolin", cursive;
+}
+
+.restart h2 {
+  font-size: 2rem;
+  font-family: "Pangolin", cursive;
+  text-align: center;
+}
+
+.restart:hover {
+  cursor: pointer;
+}
