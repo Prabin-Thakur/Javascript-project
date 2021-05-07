@@ -31,11 +31,6 @@ boxes.forEach(boxes => {
     boxes.addEventListener('click',()=> {
         boxes.classList.toggle("rotate");
         flip.textContent = flips++;
-    });
-});
-
-front.forEach(front => {
-front.addEventListener('click',()=> {
-       console.log(front.getAttribute('src'))
+        console.log(boxes.dataset.name);
     });
 });
